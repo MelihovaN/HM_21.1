@@ -1,6 +1,6 @@
-const users = require("../fixtures/user.json");
-const generalElements = require("../fixtures/pages/general.json");
-const boxPage = require("../fixtures/pages/boxPage.json");
+const users = require("../../fixtures/user.json");
+const generalElements = require("../../fixtures/pages/general.json");
+const boxPage = require("../../fixtures/pages/boxPage.json");
 import { faker } from "@faker-js/faker";
 
 let newBoxName = faker.word.noun({ length: { min: 5, max: 10 } });
