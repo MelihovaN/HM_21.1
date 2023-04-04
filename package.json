@@ -6,7 +6,13 @@
   "scripts": {
     "cy:open": "npx cypress open",
     "cy:run": "cypress run",
-    "cy:dashboard": "npx cypress run --record --key ea0c3a99-d8fa-4b2d-a340-fea8c7357e8a"
+    "cy:dash": "cypress run --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9",
+    "cy:spec1": "cypress run --spec 'cypress/e2e/test1/*' --browser chrome --config-file cypress1.config.js",
+    "cy:spec2": "cypress run --spec 'cypress/e2e/test2/*' --browser electron --config-file cypress2.config.js",
+    "cy:spec1:dash": "cypress run --spec 'cypress/e2e/test1/*' --browser chrome --config-file cypress1.config.js --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9",
+    "cy:spec2:dash": "cypress run --spec 'cypress/e2e/test2/*' --browser electron --config-file cypress2.config.js --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9",
+    "cy:local:parallel": "npm run cy:spec1 & npm run cy:spec2",
+    "cy:dash:parallel": "npm run cy:spec1:dash -- --group Spec1 --ci-build-id 3 --parallel & npm run cy:spec2:dash -- --group Spec2 --ci-build-id 3 --parallel"
   },
   "author": "NataliaM",
   "license": "ISC",
