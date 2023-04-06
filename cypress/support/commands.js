@@ -1,6 +1,7 @@
 const loginPage = require("../fixtures/pages/loginPage.json");
 const generalElements = require("../fixtures/pages/general.json");
 const boxPage = require("../fixtures/pages/boxPage.json");
+const boxSettings = require("../fixtures/pages/boxSettings.json");
 
 Cypress.Commands.add("login", (userName, password) => {
   cy.get(loginPage.loginField).type(userName);
@@ -24,6 +25,13 @@ Cypress.Commands.add("creatBox", () => {
   cy.get(boxPage.arrowRight).click();
   cy.contains("Дополнительные настройки").should("exist");
   cy.get(boxPage.arrowRight).click();
+});
+
+Cypress.Commands.add("deleteBox", () => {
+  cy.pressClick(boxSettings.boxSettingsButton);
+  cy.pressClick(boxSettings.deleteBoxLink);
+  cy.get(boxSettings.deletBoxField).type("Удалить коробку");
+  cy.pressClick(boxSettings.confirmDeleteBox);
 });
 
 // ***********************************************

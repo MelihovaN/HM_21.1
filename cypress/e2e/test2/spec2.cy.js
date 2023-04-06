@@ -25,18 +25,7 @@ describe("user can create a box", () => {
     cy.creatBox();
   });
 
-  it("delete the box API", () => {
-    cy.request({
-      method: "POST",
-      url: "/api/login",
-      body: {
-        email: users.userAutor.email,
-        password: users.userAutor.password,
-      },
-    });
-    cy.request({
-      method: "DELETE",
-      url: "/api/box/" + key,
-    });
+  it("delete the box", () => {
+    cy.deleteBox();
   });
 });
