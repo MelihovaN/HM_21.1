@@ -8,11 +8,15 @@
     "cy:run": "cypress run --config-file cypress1.config.js",
     "cy:dash": "cypress run --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9 --config-file cypress1.config.js",
     "cy:spec1": "cypress run --spec 'cypress/e2e/test1/*' --browser chrome --config-file cypress1.config.js",
-    "cy:spec2": "cypress run --spec 'cypress/e2e/test2/*' --browser electron --config-file cypress2.config.js",
+    "cy:spec2": "cypress run --spec 'cypress/e2e/test2/*' --browser electron --config-file cypress2.config.js --env allure=true",
     "cy:spec1:dash": "cypress run --spec 'cypress/e2e/test1/*' --browser chrome --config-file cypress1.config.js --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9",
     "cy:spec2:dash": "cypress run --spec 'cypress/e2e/test2/*' --browser electron --config-file cypress2.config.js --record --key 5da66a8f-ca7b-467a-b8c1-73ae4d4897d9",
     "cy:local:parallel": "npm run cy:spec1 & npm run cy:spec2",
-    "cy:dash:parallel": "npm run cy:spec1:dash -- --group Spec1 --ci-build-id %BUILD_ID% --parallel & npm run cy:spec2:dash -- --group Spec2 --ci-build-id %BUILD_ID% --parallel"
+    "cy:dash:parallel": "npm run cy:spec1:dash -- --group Spec1 --ci-build-id %BUILD_ID% --parallel & npm run cy:spec2:dash -- --group Spec2 --ci-build-id %BUILD_ID% --parallel",
+    "cy:run:allure": "cypress run --config-file cypress1.config.js --env allure=true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:clear": "rm -r allure-results/ allure-report cypress/screenshots || true",
+    "allure:history": "mv -f allure-report/history allure-results/history && rm -r allure-report || true"
   },
   "author": "NataliaM",
   "license": "ISC",
@@ -22,6 +26,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@shelex/cypress-allure-plugin": "^2.38.3",
     "cypress": "^12.9.0"
   }
 }
